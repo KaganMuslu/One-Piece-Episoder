@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% block head %}
+<title>OP Episoder | Anasayfa</title>
+
+<style>
+  #myUL {
+    /* Remove default list styling */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>
+
+{% endblock head %} {% block body %}
+
+<br /><br />
+
+<div class="container text-center">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <div class="btn-group" role="group" aria-label="Filter">
+        {% if user.is_authenticated %}
+          {% if current_user.list_setting == 0 %}
+            <a href="change_setting/0" type="button" class="btn btn-outline-success active">Tümü</a>
+            <a href="change_setting/1" type="button" class="btn btn-outline-success">İzlenenler</a>
+            <a href="change_setting/2" type="button" class="btn btn-outline-success">İzlenmeyenler</a>
+          {% elif current_user.list_setting == 1 %}
+            <a href="change_setting/0" type="button" class="btn btn-outline-success ">Tümü</a>
+            <a href="change_setting/1" type="button" class="btn btn-outline-success active">İzlenenler</a>
+            <a href="change_setting/2" type="button" class="btn btn-outline-success">İzlenmeyenler</a>
+          {% elif current_user.list_setting == 2 %}
+            <a href="change_setting/0" type="button" class="btn btn-outline-success ">Tümü</a>
+            <a href="change_setting/1" type="button" class="btn btn-outline-success">İzlenenler</a>
+            <a href="change_setting/2" type="button" class="btn btn-outline-success active">İzlenmeyenler</a>
+          {% endif %}
+        {% else %}
+          <a type="button" class="btn btn-outline-success active">Tümü</a>
+          <a type="button" class="btn btn-outline-success">İzlenenler</a>
+          <a type="button" class="btn btn-outline-success">İzlenmeyenler</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row">
+
+    <div class="col-3 d-flex justify-content-center">
+    </div>
+
+    <div class="col-6">
+      <div class="list-group">
+        <ul id="myUL">
+          {% for episode in epidsode_list %}
+          <li>
+          <form method="POST" action="/ep_download" target="_blank">
+
+            <div class="btn-group d-flex justify-content-between" role="group" aria-label="Basic button group">
+
+            {% if user.is_authenticated %}
+              {% if current_user.list_setting == 0 %}
+                {% if current_user.last_episode >= episode.id %}
+                  <button  name="episode_id" type="submit" class="list-group-item list-group-item-action list-group-item-success" value={{episode.id}}> {{ episode.title }}</button>
+                  <a style="background-color:OldLace" href="/watched_ep/{{episode.id}}" type="button" class="btn btn-outline-success">Buraya Kadar İzledim</a>
+                {% elif current_user.last_episode <= episode.id %}
+                  <button  name="episode_id" type="submit" class="list-group-item list-group-item-action list-group-item-success" value={{episode.id}}> {{ episode.title }}</button>
+                  <a href="/watched_ep/{{episode.id}}" type="button" class="btn btn-outline-success">Buraya Kadar İzledim</a>
+                {% endif %}
+
+              {% elif current_user.list_setting == 1 %}
+                {% if current_user.last_episode >= episode.id %}
+                  <button  name="episode_id" type="submit" class="list-group-item list-group-item-action list-group-item-success" value={{episode.id}}> {{ episode.title }}</button>
+                  <a style="background-color:OldLace" href="/watched_ep/{{episode.id}}" type="button" class="btn btn-outline-success">Buraya Kadar İzledim</a>
+                {% endif %}
+
+              {% elif current_user.list_setting == 2 %}
+                {% if current_user.last_episode < episode.id %}
+                  <button  name="episode_id" type="submit" class="list-group-item list-group-item-action list-group-item-success" value={{episode.id}}> {{ episode.title }}</button>
+                  <a href="/watched_ep/{{episode.id}}" type="button" class="btn btn-outline-success">Buraya Kadar İzledim</a>
+                {% endif %}
+              {% endif %}
+
+            {% else %}
+              <button  name="episode_id" type="submit" class="list-group-item list-group-item-action list-group-item-success" value={{episode.id}}> {{ episode.title }}</button>
+              <a href="/watched_ep/{{episode.id}}" type="button" class="btn btn-outline-success">Buraya Kadar İzledim</a>
+            {% endif %}
+            </div>
+          </form>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+ 
+    <div class="col-3 d-flex justify-content-center">
+    </div>
+
+  </div>
+  <br>
+</div>
+
+{% endblock body %}

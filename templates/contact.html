@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>OP Episoder | İletişim</title>
+{% endblock head %}
+
+{% block body %}
+
+<div style="margin: auto; width: 50%; margin-top:100px" class="card text-bg-light border-success mb-3 text-center mb-3">
+        <div class="card-body">
+            <h5 class="card-title">İletişim</h5>
+            <p class="card-text">Sitemizde rastladığınız herhangi bir teknik sorun veya içerik hatası için, hemen bize ulaşın. Kullanıcılarımızın hatasız bir deneyim yaşaması için çaba gösteriyoruz ve sizin geri bildirimleriniz bize bu konuda yardımcı olacaktır</p>
+            <form action="/send_contact" method="post">
+                <textarea class="form-control" name="message_area" placeholder="Geribildiriminizi Yazınız" rows="3"></textarea>
+                <br>
+                <button type="submit" class="btn btn-success">Salla Gitsin!</button>
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock body %}

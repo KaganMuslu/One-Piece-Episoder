@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block head %}<title>OP Episoder | Hesap</title>
+{% endblock head %}
+
+{% block body %}
+
+
+<div style="margin: auto; width: 50%; margin-top:100px" class="card card border-success mb-3 text-center mb-3">
+    <div class="card-header ">
+        
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Giriş Yap</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Kayıt Ol</a>
+            </li>
+        </ul>          
+        
+    </div>
+    <div class="card-body">
+        <div class="mb-3">
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <form action="/login" method="post" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputUsername" class="form-label"><strong>Kullanıcı Adı</strong></label>
+                            <input class="form-control" name="inputUsername" placeholder="Kullanıcı Adınızı Giriniz">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword" class="form-label"><strong>Şifre</strong></label>
+                            <input type="password" placeholder="Şifrenizi Giriniz" name="inputPassword" class="form-control" aria-labelledby="passwordHelpBlock">
+                        </div>                            
+                        <div>
+                            <br>
+                            <button type="submit" class="btn btn-success">Giriş</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+                        <form action="/register" method="post">
+                            <label for="inputUsernameNew" class="form-label"><strong>Kullanıcı Adı</strong></label>
+                            <input class="form-control" name="inputUsernameNew" placeholder="Kullanıcı Adınızı Giriniz">
+                            <br>
+                            <label type="password" for="inputPasswordNew" class="form-label"><strong>Şifre</strong></label>
+                            <input placeholder="Şifrenizi Giriniz" name="inputPasswordNew" class="form-control" aria-labelledby="passwordHelpBlock">
+                            <div id="passwordHelpBlock" class="form-text">
+                                Şifreniz en fazla 20 karakter uzunluğunda olmalı, harf ve rakam içermeli, boşluk, özel karakter, emoji içermemelidir.
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-success ">Kaydol</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
