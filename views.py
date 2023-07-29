@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, url_for, redirect, request, flash
-from bs4 import BeautifulSoup
-import requests
-from models import OPE_Episodes, OPE_Contact
-from app import db
 from flask_login import login_required, current_user
+from models import OPE_Episodes, OPE_Contact
+from bs4 import BeautifulSoup
+from app import db
+import requests
 
 
 
