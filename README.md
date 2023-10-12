@@ -11,3 +11,6 @@ Projede frontend tarafında <a href="https://www.w3schools.com/html/html_css.asp
 Projede <a href="https://flask.palletsprojects.com">Flask frameworkünü</a> kullanılarak backend tarafı oluşturulmuş,  <a href="https://flask-login.readthedocs.io/en/latest/">Flask-Login</a> ile login-logout işlemleri ve <a href="https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/">Flask-SQLAlchemy</a> ile veritabanı yönetimi sağlanmıştır. Site, <a href="https://render.com">render.com</a> üzerinde ücretsiz <a href="https://www.postgresql.org">PostgreSQL</a> veritabanını kullanarak verileri depolamakta ve <a href="https://vercel.com">Vercel.com</a> üzerinden ücretsiz hosting hizmeti ile yayınlanmaktadır.
 
 Projenin veri kaynağı ise, başka bir web sitesine HTTP requestleri atılarak erişmektir. Bu sayede <a href="https://en.wikipedia.org/wiki/Web_scraping">web scraping</a> ve veri manipülasyonu yöntemleri kullanılarak, ilgili sitedeki dizinin bölümleri ve indirme linkleri çekilmektedir.
+
+![image](https://github.com/KaganMuslu/One-Piece-Episoder/assets/71410113/7e896963-2877-49c0-9e80-c3dc1abe94d0)
+
